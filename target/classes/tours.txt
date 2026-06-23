@@ -1,5 +1,0 @@
-Ruta Gastronómica Frutillar;Gastronómico;25000
-Paseo Lacustre Llanquihue;Lacustre;18000
-Tour Cultural Calbuco;Cultural;15000
-Excursión Volcán Osorno;Aventura;45000
-City Tour Puerto Varas;Cultural;12000

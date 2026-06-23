@@ -1,5 +1,4 @@
-![Duoc UC](https://www.duoc.cl/wp-content/uploads/2022/09/logo-0.png)
-# 🧠 Evaluación Final Transversal – Desarrollo Orientado a Objetos I
+# 🧠 Evaluación Sumativa 2 – Desarrollo Orientado a Objetos I
 
 ## 👤 Autor del proyecto
 - **Nombre completo:** Paula Gallegos
@@ -10,7 +9,7 @@
 ---
 
 ## 📘 Descripción general del sistema
-Este proyecto corresponde a la Evaluación Formativa Semana 4 de la asignatura *Desarrollo Orientado a Objetos I*. Se trata de un sistema orientado a objetos desarrollado en Java, cuyo objetivo es modelar y gestionar entidades representativas de un dominio real, aplicando los principios de encapsulamiento, composición, herencia, polimorfismo e interfaces.
+Este proyecto corresponde a la Evaluación Sumativa 2 Semana 5 de la asignatura *Desarrollo Orientado a Objetos I*. Se trata de un sistema orientado a objetos desarrollado en Java, cuyo objetivo es modelar y gestionar entidades representativas de un dominio real, aplicando los principios de encapsulamiento, composición, herencia, polimorfismo e interfaces.
 
 El proyecto fue desarrollado a partir de un caso contextualizado, abordando problemáticas reales y proponiendo una solución estructurada, modular y reutilizable.
 
@@ -26,24 +25,6 @@ El proyecto fue desarrollado a partir de un caso contextualizado, abordando prob
 ````
 
 ---
-
-
-
-## ⚙️ Instrucciones para clonar y ejecutar el proyecto
-
-1. Clona el repositorio desde GitHub:
-
-```bash
-git clone https://github.com/pgallegosgutierrez/LlanquihueTour_S4
-```
-
-2. Abre el proyecto en IntelliJ IDEA.
-
-3. Verifica que los archivos `.txt` estén correctamente ubicados.
-
-4. Ejecuta el archivo `Main.java` desde el paquete `app`.
-
-5. Sigue las instrucciones en consola o en la interfaz gráfica (si corresponde).
 
 
 ---

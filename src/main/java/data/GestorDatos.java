@@ -1,5 +1,7 @@
 package data;
 
+import model.Guia;
+import model.Operador;
 import model.Tour;
 
 import java.io.BufferedReader;
@@ -33,13 +35,21 @@ public class GestorDatos {
             String linea;
 
             while ((linea = br.readLine()) != null) {
-                String[] partes = linea.split(";");
+                String[] partes = linea.split(",");
+                String nombre_tour = partes[0].trim();
+                String tipo_tour= partes[1].trim();
+                int precio_tour= Integer.parseInt(partes[2].trim());
+                String empresa= partes[3].trim();
+                String telefono=partes[4].trim();
+                String correo=partes[5].trim();
+                //String nombreguia=partes[6].trim(); mas que nada por buena practica, si el nombre de una variable consta de 2 o mas palabras se usa un _ para separarlas
+                String nombre_guia=partes[6].trim();
+                int experiencia= Integer.parseInt(partes[7].trim());
+                String contacto=partes[8].trim();
 
-                String nombre= partes[0].trim();
-                String tipo= partes[1].trim();
-                int precio= Integer.parseInt(partes[2].trim());
-
-                Tour tour = new Tour(nombre, tipo, precio);
+                Guia guia= new Guia (nombre_guia,experiencia,contacto);
+                Operador op1= new Operador(empresa,telefono,correo,guia);
+                Tour tour = new Tour(nombre_tour, tipo_tour, precio_tour,op1);
                 tours.add(tour);
             }
         } catch (IOException e) {
