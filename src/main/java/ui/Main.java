@@ -1,5 +1,39 @@
 package ui;
 
+import data.GestorServicios;
+public class Main {
+    public static void main(String[] args) {
+        GestorServicios gestor = new GestorServicios();
+        gestor.mostrarServicios();
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  CÓDIGO DE LA TAREA ANTERIOR. SEMANA 5
+
 import data.GestorDatos;
 import model.Tour;
 import java.util.ArrayList;
@@ -9,7 +43,7 @@ import java.util.ArrayList;
  *
  * @author Paula Gallegos
  * @version 1.0
- */
+
 public class Main {
 
     public static void main(String[] args) {
@@ -47,21 +81,21 @@ public class Main {
         for (Tour tour : listaTours) {
 
             System.out.printf("%-28s %-15s $%-7d | %-25s %-12s %-30s | %-20s %-10d %-12s%n",
-            tour.getNombre(),
-            tour.getTipo(),
-            tour.getPrecio(),
-            tour.getOperador().getNombre(),
-            tour.getOperador().getTelefono(),
-            tour.getOperador().getCorreo(),
-            tour.getOperador().getGuia().getNombre(),
-            tour.getOperador().getGuia().getExperiencia(),
-            tour.getOperador().getGuia().getContacto());
+                    tour.getNombre(),
+                    tour.getTipo(),
+                    tour.getPrecio(),
+                    tour.getOperador().getNombre(),
+                    tour.getOperador().getTelefono(),
+                    tour.getOperador().getCorreo(),
+                    tour.getOperador().getGuia().getNombre(),
+                    tour.getOperador().getGuia().getExperiencia(),
+                    tour.getOperador().getGuia().getContacto());
 
         }
 
         System.out.println("=================================================================================================================================================================================");
 
-        // Bucle 2: solo culturales (SEPARADO, después del primero)
+        // Bucle 2: Filtro solo culturales
         System.out.println("\n------TOURS CULTURALES------");
         for (Tour tour :listaTours){
             if (tour.getTipo().equalsIgnoreCase("cultural"))
@@ -72,3 +106,6 @@ public class Main {
 
 
 }
+
+
+ */
