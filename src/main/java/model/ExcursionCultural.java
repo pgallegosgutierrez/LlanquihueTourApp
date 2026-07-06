@@ -9,6 +9,11 @@ public class ExcursionCultural extends ServicioTuristico {
     }
 
     @Override
+    public void mostrarInformacion() {
+        System.out.println(toString());
+    }
+
+    @Override
     public String toString(){
         return super.toString()+ "| Lugar Histórico: "+lugarHistorico;
     }
