@@ -1,8 +1,7 @@
-package model;
+package model.ServicioTuristico;
 
 
-
-public class RutaGastronomica extends ServicioTuristico{
+public class RutaGastronomica extends ServicioTuristico {
     private int numeroDeParadas;
 
 public RutaGastronomica (String nombre,double duracionHoras,int numeroDeParadas){
@@ -10,8 +9,16 @@ public RutaGastronomica (String nombre,double duracionHoras,int numeroDeParadas)
     this.numeroDeParadas = numeroDeParadas;
 }
 
+    public int getNumeroDeParadas() {
+        return numeroDeParadas;
+    }
+
+    public void setNumeroDeParadas(int numeroDeParadas) {
+        this.numeroDeParadas = numeroDeParadas;
+    }
+
     @Override
-    public void mostrarInformacion() {
+    public void mostrarResumen() {
         System.out.println(toString());
     }
 

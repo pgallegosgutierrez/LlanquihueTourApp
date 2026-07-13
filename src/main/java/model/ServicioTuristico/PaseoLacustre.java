@@ -1,4 +1,4 @@
-package model;
+package model.ServicioTuristico;
 
 public class PaseoLacustre extends ServicioTuristico {
     private String tipoEmbarcacion;
@@ -8,8 +8,16 @@ public class PaseoLacustre extends ServicioTuristico {
         this.tipoEmbarcacion=tipoEmbarcacion;
     }
 
+    public String getTipoEmbarcacion() {
+        return tipoEmbarcacion;
+    }
+
+    public void setTipoEmbarcacion(String tipoEmbarcacion) {
+        this.tipoEmbarcacion = tipoEmbarcacion;
+    }
+
     @Override
-    public void mostrarInformacion() {
+    public void mostrarResumen() {
         System.out.println(toString());
     }
 

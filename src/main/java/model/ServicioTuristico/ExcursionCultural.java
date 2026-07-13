@@ -1,4 +1,4 @@
-package model;
+package model.ServicioTuristico;
 
 public class ExcursionCultural extends ServicioTuristico {
     private String lugarHistorico;
@@ -8,8 +8,16 @@ public class ExcursionCultural extends ServicioTuristico {
         this.lugarHistorico=lugarHistorico;
     }
 
+    public String getLugarHistorico() {
+        return lugarHistorico;
+    }
+
+    public void setLugarHistorico(String lugarHistorico) {
+        this.lugarHistorico = lugarHistorico;
+    }
+
     @Override
-    public void mostrarInformacion() {
+    public void mostrarResumen() {
         System.out.println(toString());
     }
 

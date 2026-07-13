@@ -1,4 +1,4 @@
-# 🧠 Evaluación Formativa 5 – Desarrollo Orientado a Objetos I
+# 🧠 Evaluación Sumativa 3 – Desarrollo Orientado a Objetos I
 
 ## 👤 Autor del proyecto
 - **Nombre completo:** Paula Gallegos
@@ -9,7 +9,7 @@
 ---
 
 ## 📘 Descripción general del sistema
-Este proyecto corresponde a la Evaluación Formativa 5 Semana 7 de la asignatura *Desarrollo Orientado a Objetos I*. Se trata de un sistema orientado a objetos desarrollado en Java, cuyo objetivo es modelar y gestionar entidades representativas de un dominio real, aplicando los principios de encapsulamiento, composición, herencia, polimorfismo e interfaces.
+Este proyecto corresponde a la Evaluación Sumativa Semana 8 de la asignatura *Desarrollo Orientado a Objetos I*. Se trata de un sistema orientado a objetos desarrollado en Java, cuyo objetivo es modelar y gestionar entidades representativas de un dominio real, aplicando los principios de encapsulamiento, composición, herencia, polimorfismo e interfaces.
 
 El proyecto fue desarrollado a partir de un caso contextualizado, abordando problemáticas reales y proponiendo una solución estructurada, modular y reutilizable.
 
@@ -21,7 +21,7 @@ El proyecto fue desarrollado a partir de un caso contextualizado, abordando prob
 📁 src/
 ├── model/       # Clases de dominio 
 ├── data/        # Clase para Gestionar los servicios en una coleccion polimorfica
-├── ui           # Clase Main
+├── app           # Clase Main
 ````
 
 ---
@@ -30,7 +30,7 @@ El proyecto fue desarrollado a partir de un caso contextualizado, abordando prob
 ---
 
 **Repositorio GitHub:**  https://github.com/pgallegosgutierrez/LlanquihueTourApp
-**Fecha de entrega:** \[06/07/2026]
+**Fecha de entrega:** \[13/07/2026]
 
 ---
 
