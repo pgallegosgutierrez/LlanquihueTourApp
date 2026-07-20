@@ -1,14 +1,16 @@
 package model.gui;
 
 
+import data.GestorEntidades;
 import model.Interface.Registrable;
 import model.Personas.Guia;
 import model.Personas.Cliente;
-import model.Transporte;
+import model.Operadores.Transporte;
 
 import model.ServicioTuristico.RutaGastronomica;
 import model.ServicioTuristico.PaseoLacustre;
 import model.ServicioTuristico.ExcursionCultural;
+import model.exception.RutInvalidoException;
 
 import javax.swing.*;
 import java.awt.*;
@@ -28,8 +30,14 @@ import java.util.List;
  */
 public class VentanaLlanquihueTour extends JFrame {
 
+    // Ruta del archivo de datos (carga y guardado)
+    private static final String RUTA = "src/main/resources/registros.txt";
+
     // Colección polimórfica: guarda TODAS las entidades porque todas son Registrable.
     private final List<Registrable> registros = new ArrayList<>();
+
+    // Gestor encargado de leer y escribir el archivo de datos
+    private final GestorEntidades gestor = new GestorEntidades();
 
     // Áreas de texto (una por pestaña) donde se listan los datos ingresados
     private JTextArea areaServicios;
@@ -41,12 +49,8 @@ public class VentanaLlanquihueTour extends JFrame {
     public VentanaLlanquihueTour() {
         super("Sistema Llanquihue Tour");
 
-        // DATOS INICIALES
-        registros.add(new Guia("Raul Martinez", "8334651-3", "raulm@gmail.com", "+56934652788", 5));
-        registros.add(new Cliente("Andrea Jimenez", "18234537-3", "andrea.j@gmail.com", "+56987223684", "Argentina"));
-        registros.add(new Transporte("Van", 12, "DF-PK56"));
-        registros.add(new RutaGastronomica("Ruta del queso", 3, 4));
-
+        List<Registrable> datosArchivo = gestor.cargarDatos(RUTA);
+        registros.addAll(datosArchivo);
 
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -68,6 +72,11 @@ public class VentanaLlanquihueTour extends JFrame {
         JTextArea area = new JTextArea();
         area.setEditable(false);
         return area;
+    }
+
+    // Guarda el estado actual de la colección en el archivo de datos
+    private void guardar() {
+        gestor.guardarDatos(new ArrayList<>(registros), RUTA);
     }
 
     // ══════════════════════════════════════════════════════════════════
@@ -144,6 +153,7 @@ public class VentanaLlanquihueTour extends JFrame {
             txtDuracion.setText("");
             txtDatoEspecifico.setText("");
             actualizarServicios();
+            guardar();
             JOptionPane.showMessageDialog(this, "Servicio agregado exitosamente.");
         });
 
@@ -158,6 +168,7 @@ public class VentanaLlanquihueTour extends JFrame {
         return panel;
     }
 
+    // Listado resumido de servicios
     private void actualizarServicios() {
         StringBuilder sb = new StringBuilder();
         boolean hay = false;
@@ -185,6 +196,7 @@ public class VentanaLlanquihueTour extends JFrame {
         if (!hay) sb.append("No hay servicios registrados.");
         areaServicios.setText(sb.toString());
     }
+
     // ══════════════════════════════════════════════════════════════════
     //  CLIENTES
     // ══════════════════════════════════════════════════════════════════
@@ -215,14 +227,21 @@ public class VentanaLlanquihueTour extends JFrame {
                 JOptionPane.showMessageDialog(this, "Nombre y RUT son obligatorios.");
                 return;
             }
-            registros.add(new Cliente(txtNombre.getText(), txtRut.getText(), txtCorreo.getText(),
-                    txtTelefono.getText(), txtNacionalidad.getText()));
+            try{
+                registros.add(new Cliente(txtNombre.getText(), txtRut.getText(), txtCorreo.getText(),
+                        txtTelefono.getText(), txtNacionalidad.getText()));
+            } catch (RutInvalidoException ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage());
+                return;
+            }
+
             txtNombre.setText("");
             txtRut.setText("");
             txtCorreo.setText("");
             txtTelefono.setText("");
             txtNacionalidad.setText("");
             actualizarClientes();
+            guardar();
             JOptionPane.showMessageDialog(this, "Cliente agregado exitosamente.");
         });
 
@@ -237,6 +256,7 @@ public class VentanaLlanquihueTour extends JFrame {
         return panel;
     }
 
+    // Listado resumido de clientes
     private void actualizarClientes() {
         StringBuilder sb = new StringBuilder();
         boolean hay = false;
@@ -290,14 +310,20 @@ public class VentanaLlanquihueTour extends JFrame {
                 JOptionPane.showMessageDialog(this, "La experiencia debe ser un número.");
                 return;
             }
-            registros.add(new Guia(txtNombre.getText(), txtRut.getText(), txtCorreo.getText(),
-                    txtTelefono.getText(), experiencia));
+            try {
+                registros.add(new Guia(txtNombre.getText(), txtRut.getText(), txtCorreo.getText(),
+                        txtTelefono.getText(), experiencia));
+            } catch (RutInvalidoException ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage());
+                return;
+            }
             txtNombre.setText("");
             txtRut.setText("");
             txtCorreo.setText("");
             txtTelefono.setText("");
             txtExperiencia.setText("");
             actualizarGuias();
+            guardar();
             JOptionPane.showMessageDialog(this, "Guía agregado exitosamente.");
         });
 
@@ -312,6 +338,7 @@ public class VentanaLlanquihueTour extends JFrame {
         return panel;
     }
 
+    // Listado resumido de guías
     private void actualizarGuias() {
         StringBuilder sb = new StringBuilder();
         boolean hay = false;
@@ -321,12 +348,12 @@ public class VentanaLlanquihueTour extends JFrame {
                 sb.append("Nombre: ").append(g.getNombre())
                         .append(" | Experiencia: ").append(g.getExperiencia()).append(" años")
                         .append("\n");
-                sb.append("   *ATENCIÓN: Todos los guías deben portar credencial\n");
-
                 hay = true;
             }
         }
         if (!hay) sb.append("No hay guías registrados.");
+        sb.append("   *ATENCIÓN: Todos los guías deben portar credencial\n");
+
         areaGuias.setText(sb.toString());
     }
 
@@ -368,6 +395,7 @@ public class VentanaLlanquihueTour extends JFrame {
             txtCapacidad.setText("");
             txtPatente.setText("");
             actualizarTransportes();
+            guardar();
             JOptionPane.showMessageDialog(this, "Transporte agregado exitosamente.");
         });
 
@@ -382,6 +410,7 @@ public class VentanaLlanquihueTour extends JFrame {
         return panel;
     }
 
+    // Listado resumido de transportes
     private void actualizarTransportes() {
         StringBuilder sb = new StringBuilder();
         boolean hay = false;
@@ -389,14 +418,14 @@ public class VentanaLlanquihueTour extends JFrame {
             if (r instanceof Transporte) {
                 Transporte t = (Transporte) r;
                 sb.append("Tipo: ").append(t.getTipo())
-                        .append(" | Capacidad: ").append(t.getCapacidad())
                         .append(" | Patente: ").append(t.getPatente())
                         .append("\n");
-                sb.append("   *ATENCIÓN: El vehículo requiere llenado de combustible\n");
                 hay = true;
             }
         }
         if (!hay) sb.append("No hay transportes registrados.");
+        sb.append("   *ATENCIÓN: El vehículo requiere llenado de combustible\n");
+
         areaTransportes.setText(sb.toString());
     }
 
@@ -417,6 +446,7 @@ public class VentanaLlanquihueTour extends JFrame {
         return panel;
     }
 
+    // Listado con el detalle completo de cada entidad
     private void actualizarTodos() {
         StringBuilder sb = new StringBuilder();
         if (registros.isEmpty()) {
@@ -426,33 +456,46 @@ public class VentanaLlanquihueTour extends JFrame {
                 if (r instanceof Guia) {
                     Guia g = (Guia) r;
                     sb.append("[GUÍA] ").append(g.getNombre())
-                            .append(" - ").append(g.getExperiencia()).append(" años");
+                            .append(" | RUT: ").append(g.getRut())
+                            .append(" | Correo: ").append(g.getCorreo())
+                            .append(" | Tel: ").append(g.getTelefono())
+                            .append(" | Experiencia: ").append(g.getExperiencia()).append(" años");
+
                 } else if (r instanceof Cliente) {
                     Cliente c = (Cliente) r;
                     sb.append("[CLIENTE] ").append(c.getNombre())
-                            .append(" - ").append(c.getNacionalidad());
+                            .append(" | RUT: ").append(c.getRut())
+                            .append(" | Correo: ").append(c.getCorreo())
+                            .append(" | Tel: ").append(c.getTelefono())
+                            .append(" | Nacionalidad: ").append(c.getNacionalidad());
+
                 } else if (r instanceof Transporte) {
                     Transporte t = (Transporte) r;
                     sb.append("[TRANSPORTE] ").append(t.getTipo())
-                            .append(" - ").append(t.getPatente());
+                            .append(" | Capacidad: ").append(t.getCapacidad())
+                            .append(" | Patente: ").append(t.getPatente());
+
                 } else if (r instanceof RutaGastronomica) {
                     RutaGastronomica rg = (RutaGastronomica) r;
                     sb.append("[RUTA] ").append(rg.getNombre())
-                            .append(" - ").append(rg.getNumeroDeParadas()).append(" paradas");
+                            .append(" | Duración: ").append(rg.getDuracionHoras()).append(" hrs")
+                            .append(" | Paradas: ").append(rg.getNumeroDeParadas());
+
                 } else if (r instanceof PaseoLacustre) {
                     PaseoLacustre pl = (PaseoLacustre) r;
                     sb.append("[PASEO] ").append(pl.getNombre())
-                            .append(" - ").append(pl.getTipoEmbarcacion());
+                            .append(" | Duración: ").append(pl.getDuracionHoras()).append(" hrs")
+                            .append(" | Embarcación: ").append(pl.getTipoEmbarcacion());
+
                 } else if (r instanceof ExcursionCultural) {
                     ExcursionCultural ec = (ExcursionCultural) r;
                     sb.append("[EXCURSIÓN] ").append(ec.getNombre())
-                            .append(" - ").append(ec.getLugarHistorico());
+                            .append(" | Duración: ").append(ec.getDuracionHoras()).append(" hrs")
+                            .append(" | Lugar: ").append(ec.getLugarHistorico());
                 }
                 sb.append("\n");
             }
         }
         areaTodos.setText(sb.toString());
     }
-
-
 }

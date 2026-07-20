@@ -1,10 +1,12 @@
 package model.Personas;
 
-    public class Cliente  extends Persona{
+import model.exception.RutInvalidoException;
+
+public class Cliente  extends Persona{
 
         private String nacionalidad;
 
-        public Cliente(String nombre, String rut, String correo, String telefono, String nacionalidad) {
+        public Cliente(String nombre, String rut, String correo, String telefono, String nacionalidad) throws RutInvalidoException {
             super(nombre, rut, correo, telefono);
             this.nacionalidad=nacionalidad;
         }

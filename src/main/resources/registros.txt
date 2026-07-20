@@ -1,0 +1,22 @@
+CLIENTE;Andrea Jimenez;18234537-3;andrea.j@gmail.com;+56987223684;Argentina
+CLIENTE;Carla Cespedes;15324549-1;andrea.j@gmail.com;+5698468684;Chile
+CLIENTE;Omar Gutiérrez;18367341-k;omarg@gmail.com;+56987223684;Chile
+CLIENTE;Felipe Uribe;204535542-3;furibe@gmail.com;+5694430495;Argentina
+CLIENTE;Natalia Fernández;18234537-3;natifer@gmail.com;+56988776394;Chile
+GUIA;Raul Martinez;8334651-3;raulm@gmail.com;+569346527885;5
+GUIA;Luis Pacheco;10334651-3;luispacheco@gmail.com;+5695438992;2
+GUIA;Paola Muñoz;9113456-7;paolam@gmail.com;+5692883045;4
+GUIA;Andres Pizarro;8543879-k;andrespi@gmail.com;+5694475922;7
+RUTA GASTRONOMICA;Ruta del queso;3.0;4
+PASEO LACUSTRE;Navegación Lago Llanquihue;1.0;Catamarán
+PASEO LACUSTRE;Cruce Andino;6.0;Ferry
+RUTA GASTRONOMICA;Ruta del Kuchen;3.0;3
+EXCURSION CULTURAL;Museo Colonial Alemán;2.0;Museo Alemán de Frutillar
+EXCURSION CULTURAL;Casamuseo Pablo Fierro;1.0;Casa Pablo Fierro Puerto Varas
+TRANSPORTE;Van;10;DF-PK56
+TRANSPORTE;Van;10;PK-DF32
+TRANSPORTE;Bus;30;FD-DE43
+TRANSPORTE;Van;10;GF-DS24
+CLIENTE;Paula Gallegos;17319287-8;paula@gmail.com;9223638394;Chilena
+CLIENTE;Andrea Gutierrez;83736374-4;andrea@gmail.com;93338387559;Argentina
+CLIENTE;Pamela Uribe;17435567-k;pamela@gmail.com;9333648484;Chilena
