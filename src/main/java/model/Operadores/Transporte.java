@@ -44,6 +44,4 @@ public class Transporte implements Registrable {
         System.out.println("Capacidad de pasajeros: "+capacidad);
         System.out.println("Patente: "+patente);
     }
-
-
 }

@@ -25,6 +25,4 @@ public class ExcursionCultural extends ServicioTuristico {
     public String toString(){
         return super.toString()+ "| Lugar Histórico: "+lugarHistorico;
     }
-
-
 }
